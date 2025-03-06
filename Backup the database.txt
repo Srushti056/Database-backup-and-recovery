@@ -1,0 +1,14 @@
+-- Backup the database
+BACKUP DATABASE [YourDatabaseName]
+TO DISK = N'C:\Backup\YourDatabaseName.bak'
+WITH NOFORMAT, NOINIT, 
+NAME = N'YourDatabaseName-Full Backup', 
+SKIP, NOREWIND, NOUNLOAD, STATS = 10;
+
+-- Restore the database
+RESTORE DATABASE [YourDatabaseName]
+FROM DISK = N'C:\Backup\YourDatabaseName.bak'
+WITH FILE = 1,  
+    NOUNLOAD,  
+    REPLACE,  
+    STATS = 10;
